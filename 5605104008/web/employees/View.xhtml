@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewEmployeesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewEmployeesLabel_empname}"/>
+                    <h:outputText value="#{employeesController.selected.empname}" title="#{bundle.ViewEmployeesTitle_empname}"/>
+                    <h:outputText value="#{bundle.ViewEmployeesLabel_hiredate}"/>
+                    <h:outputText value="#{employeesController.selected.hiredate}" title="#{bundle.ViewEmployeesTitle_hiredate}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewEmployeesLabel_salary}"/>
+                    <h:outputText value="#{employeesController.selected.salary}" title="#{bundle.ViewEmployeesTitle_salary}"/>
+                    <h:outputText value="#{bundle.ViewEmployeesLabel_position}"/>
+                    <h:outputText value="#{employeesController.selected.position}" title="#{bundle.ViewEmployeesTitle_position}"/>
+                    <h:outputText value="#{bundle.ViewEmployeesLabel_mgrno}"/>
+                    <h:outputText value="#{employeesController.selected.mgrno}" title="#{bundle.ViewEmployeesTitle_mgrno}"/>
+                    <h:outputText value="#{bundle.ViewEmployeesLabel_depno}"/>
+                    <h:outputText value="#{employeesController.selected.depno}" title="#{bundle.ViewEmployeesTitle_depno}"/>
+                    <h:outputText value="#{bundle.ViewEmployeesLabel_details}"/>
+                    <h:outputText value="#{employeesController.selected.details}" title="#{bundle.ViewEmployeesTitle_details}"/>
+                    <h:outputText value="#{bundle.ViewEmployeesLabel_projwork}"/>
+                    <h:outputText value="#{employeesController.selected.projwork}" title="#{bundle.ViewEmployeesTitle_projwork}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{employeesController.destroyAndView}" value="#{bundle.ViewEmployeesDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewEmployeesEditLink}"/>
+                <br />
+                <h:commandLink action="#{employeesController.prepareCreate}" value="#{bundle.ViewEmployeesCreateLink}" />
+                <br />
+                <h:commandLink action="#{employeesController.prepareList}" value="#{bundle.ViewEmployeesShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewEmployeesIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

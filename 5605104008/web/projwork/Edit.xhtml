@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditProjworkTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditProjworkLabel_projworkPK_empnum}" for="projworkPK_empnum" />
+                    <h:inputText id="projworkPK_empnum" value="#{projworkController.selected.projworkPK.empnum}" title="#{bundle.EditProjworkTitle_projworkPK_empnum}" required="true" requiredMessage="#{bundle.EditProjworkRequiredMessage_projworkPK_empnum}"/>
+                    <h:outputLabel value="#{bundle.EditProjworkLabel_hours}" for="hours" />
+                    <h:inputText id="hours" value="#{projworkController.selected.hours}" title="#{bundle.EditProjworkTitle_hours}" />
+                    <h:outputLabel value="#{bundle.EditProjworkLabel_project}" for="project" />
+                    <h:selectOneMenu id="project" value="#{projworkController.selected.project}" title="#{bundle.EditProjworkTitle_project}" required="true" requiredMessage="#{bundle.EditProjworkRequiredMessage_project}">
+                        <f:selectItems value="#{projectController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{projworkController.update}" value="#{bundle.EditProjworkSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditProjworkViewLink}"/>
+                <br />
+                <h:commandLink action="#{projworkController.prepareList}" value="#{bundle.EditProjworkShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditProjworkIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
